@@ -1,0 +1,15 @@
+service: sls-aws-spring-cloud-function
+provider:
+  name: aws
+  region: ap-south-1
+  lambdaHashingVersion: 20201221
+  runtime: java11
+  timeout: 10
+
+package:
+  artifact: target/serverless-0.0.1-SNAPSHOT-aws.jar
+functions:
+  members:
+    handler: org.springframework.cloud.function.adapter.aws.FunctionInvoker::handleRequest
+    #environment:
+      #FUNCTION_NAME: members
